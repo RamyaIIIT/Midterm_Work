@@ -1,6 +1,6 @@
 # 1. Post Layout synthesis gate count:
 <p align="center">
-  <img width="600" height="500" src="https://user-images.githubusercontent.com/110991148/192595954-41f91a4c-5901-47a3-88b8-076f9529bf61.png">
+  <img width="800" height="400" src="https://user-images.githubusercontent.com/110991148/192595954-41f91a4c-5901-47a3-88b8-076f9529bf61.png">
 </p>
 Gate Count = 9
 
@@ -11,12 +11,22 @@ Gate Count = 9
 Area = 2467.272 µm2
 
 # 3. Performance:
+```
+$ sta
+OpenSTA> read_liberty -max /home/ramya/Desktop/OpenLane/designs/iiitb_4bitrc1/src/sky130_fd_sc_hd__fast.lib
+OpenSTA> read_liberty -min /home/ramya/Desktop/OpenLane/designs/iiitb_4bitrc1/src/sky130_fd_sc_hd__slow.lib
+OpenSTA> read_verilog /home/ramya/Desktop/OpenLane/designs/iiitb_4bitrc1/runs/RUN_2022.09.27_16.28.38/results/routing/iiitb_4bitrc.nl.v
+OpenSTA> link_design iiitb_4bitrc
+OpenSTA> read_sdc /home/ramya/Desktop/OpenLane/designs/iiitb_4bitrc1/runs/RUN_2022.09.27_16.28.38/results/cts/iiitb_4bitrc.sdc
+OpenSTA> read_spef /home/ramya/Desktop/OpenLane/designs/iiitb_4bitrc1/runs/RUN_2022.09.27_16.28.38/results/routing/iiitb_4bitrc.nom.spef
+OpenSTA> set_propagated_clock [all_clocks]
+OpenSTA> report_checks
+```
+
 <p align="center">
   <img width="600" height="500" src="https://user-images.githubusercontent.com/110991148/192597022-bbf088bd-b8b6-416f-9407-06c0746d48b0.png">
 </p>
-Clock period = 65ns
-Slack = 51.08ns
-Performance = 1/(clock period - slack) = 1/(65 - 51.08)ns = 71.84Mhz 
+Clock period = 65ns, Slack = 51.08ns, Performance = 1/(clock period - slack) = 1/(65 - 51.08)ns = 71.84Mhz 
 
 # 4. Flop/standard cell ratio:
 <p align="center">
@@ -28,7 +38,4 @@ Flop Ratio = Ratio of total number of flip flops / Total number of cells present
 <p align="center">
   <img width="600" height="500" src="https://user-images.githubusercontent.com/110991148/192597373-8dc25e5c-d529-43c8-aeb5-57b83721c68c.png">
 </p>
-Internal Power = 10.6 uW (83.9%) 
-Switching Power = 2.02 uW (16.1%) 
-Leakage Power = 0.188 nW (0.00%) 
-Total Power = 12.6 uW (100%)   
+Internal Power = 10.6 uW (83.9%), Switching Power = 2.02 uW (16.1%), Leakage Power = 0.188 nW (0.00%) & Total Power = 12.6 uW (100%)   
